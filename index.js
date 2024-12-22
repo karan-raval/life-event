@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
 const UserModel = mongoose.model('testimonial', userSchema);
 
 // Routes
-app.get("/testimonials", async (req, res) => {
+app.get("/api/testimonials", async (req, res) => {
     try {
       let data = await UserModel.find();
       res.status(200).send(data);
@@ -33,7 +33,7 @@ app.get("/testimonials", async (req, res) => {
       res.status(401).send({ msg: error.message});
     }
   });
-  app.get("/users", async (req, res) => {
+  app.get("/api/users", async (req, res) => {
     try {
       let data = await UserModel.find();
       res.status(200).send(data);
@@ -41,7 +41,7 @@ app.get("/testimonials", async (req, res) => {
       res.status(401).send({ msg: error.message});
     }
   });
-  app.get("/teams", async (req, res) => {
+  app.get("/api/teams", async (req, res) => {
     try {
       let data = await UserModel.find();
       res.status(200).send(data);
@@ -50,7 +50,7 @@ app.get("/testimonials", async (req, res) => {
     }
   });
 
-  app.get("/slide", async (req, res) => {
+  app.get("/api/slide", async (req, res) => {
     try {
       let data = await UserModel.find();
       res.status(200).send(data);
@@ -58,7 +58,7 @@ app.get("/testimonials", async (req, res) => {
       res.status(401).send({ msg: error.message});
     }
   });
-  app.get("/gallery", async (req, res) => {
+  app.get("/api/gallery", async (req, res) => {
     try {
       let data = await UserModel.find();
       res.status(200).send(data);
@@ -66,7 +66,7 @@ app.get("/testimonials", async (req, res) => {
       res.status(401).send({ msg: error.message});
     }
   });
-  app.get("/slider", async (req, res) => {
+  app.get("/api/slider", async (req, res) => {
     try {
       let data = await UserModel.find();
       res.status(200).send(data);
@@ -74,7 +74,7 @@ app.get("/testimonials", async (req, res) => {
       res.status(401).send({ msg: error.message});
     }
   });
-  app.get("/services", async (req, res) => {
+  app.get("/api/services", async (req, res) => {
     try {
       let data = await UserModel.find();
       res.status(200).send(data);
