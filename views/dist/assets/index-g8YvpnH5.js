@@ -11313,7 +11313,7 @@ const ex = () => {
       },
       o = (l) => {
         l.preventDefault(),
-          fetch("http://localhost:5000/users", {
+          fetch("http://localhost:5000/api/users", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(n),
@@ -13809,7 +13809,7 @@ const Iw = () => {
     [a, o] = L.useState("");
   return (
     L.useEffect(() => {
-      we.get("http://localhost:5000/Gallery")
+      we.get("http://localhost:5000/api/Gallery")
         .then((l) => {
           i(l.data);
         })
@@ -17385,7 +17385,7 @@ const iS = () => {
       [a, o] = L.useState(null);
     return (
       L.useEffect(() => {
-        fetch("http://localhost:5000/testimonials")
+        fetch("http://localhost:5000/api/testimonials")
           .then((l) => {
             if (!l.ok) throw new Error("Network response was not ok");
             return l.json();
@@ -17502,7 +17502,7 @@ const iS = () => {
     const [n, i] = L.useState([]);
     return (
       L.useEffect(() => {
-        we.get("http://localhost:5000/services")
+        we.get("http://localhost:5000/api/services")
           .then((a) => i(a.data))
           .catch((a) => console.error("Error fetching services:", a));
       }, []),
@@ -17964,7 +17964,7 @@ function dS() {
   }, []);
   const a = async () => {
     try {
-      const o = await we.get("http://localhost:5000/teams");
+      const o = await we.get("http://localhost:5000/api/teams");
       i(o.data);
     } catch (o) {
       console.error("Error fetching team data:", o);
@@ -18282,7 +18282,7 @@ const gS = () =>
       },
       o = (l) => {
         l.preventDefault(),
-          fetch("http://localhost:5000/users", {
+          fetch("http://localhost:5000/api/users", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(n),
@@ -18532,7 +18532,7 @@ const xS = () => {
     [a, o] = L.useState(0);
   return (
     L.useEffect(() => {
-      fetch("http://localhost:5000/slider")
+      fetch("http://localhost:5000/api/slider")
         .then((l) => l.json())
         .then((l) => i(l))
         .catch((l) => console.error("Error fetching slider data:", l));
@@ -22427,7 +22427,7 @@ const HS = () => {
     [a, o] = L.useState(0);
   return (
     L.useEffect(() => {
-      fetch("http://localhost:5000/slide")
+      fetch("http://localhost:5000/api/slide")
         .then((l) => l.json())
         .then((l) => i(l))
         .catch((l) => console.error("Error fetching slider data:", l));
@@ -22727,7 +22727,7 @@ const l_ = () => {
         var p, g;
         h.preventDefault(), l(!0);
         try {
-          const w = await we.post("http://localhost:5000/api/auth/login", i),
+          const w = await we.post("http://localhost:5000/api/api/auth/login", i),
             { token: P, message: y } = w.data;
           localStorage.setItem("token", P),
             Ne.success(y || "Login successful! 🎉"),
@@ -22831,7 +22831,7 @@ const l_ = () => {
       [w, P] = L.useState(""),
       [y, j] = L.useState("");
     L.useEffect(() => {
-      fetch("http://localhost:5000/testimonials")
+      fetch("http://localhost:5000/api/testimonials")
         .then((_) => {
           if (!_.ok) throw new Error("Network response was not ok");
           return _.json();
@@ -22845,7 +22845,7 @@ const l_ = () => {
           return;
         }
         const _ = { image: a, text: l, name: m, location: p };
-        we.post("http://localhost:5000/Testimonial", _)
+        we.post("http://localhost:5000/api/Testimonial", _)
           .then(() => {
             j("Testimonial added successfully"),
               i([...n, _]),
@@ -22857,7 +22857,7 @@ const l_ = () => {
           .catch(() => P("Failed to add testimonial"));
       },
       T = (_) => {
-        we.delete(`http://localhost:5000/Testimonial/${_}`)
+        we.delete(`http://localhost:5000/api/Testimonial/${_}`)
           .then(() => {
             j("Testimonial deleted successfully"),
               i(n.filter((A) => A.id !== _));
@@ -22954,7 +22954,7 @@ const d_ = () => {
       [m, h] = L.useState(""),
       [p, g] = L.useState(null);
     L.useEffect(() => {
-      we.get("http://localhost:5000/Gallery")
+      we.get("http://localhost:5000/api/Gallery")
         .then((y) => {
           o(y.data);
         })
@@ -22967,7 +22967,7 @@ const d_ = () => {
           c("Please enter a valid image URL");
           return;
         }
-        we.post("http://localhost:5000/Gallery", { image: n })
+        we.post("http://localhost:5000/api/Gallery", { image: n })
           .then((y) => {
             h("Image added successfully!"), i(""), o([...a, { image: n }]);
           })
@@ -22978,7 +22978,7 @@ const d_ = () => {
       P = (y) => {
         p === y
           ? (we
-              .delete(`http://localhost:5000/Gallery/${y}`)
+              .delete(`http://localhost:5000/api/Gallery/${y}`)
               .then((j) => {
                 h("Image deleted successfully!"),
                   o(a.filter((b) => b.id !== y));
@@ -23085,7 +23085,7 @@ const d_ = () => {
     }, []);
     const w = async () => {
         try {
-          const _ = await we.get("http://localhost:5000/teams");
+          const _ = await we.get("http://localhost:5000/api/teams");
           i(_.data);
         } catch (_) {
           console.error("Error fetching teams:", _);
@@ -23098,7 +23098,7 @@ const d_ = () => {
       y = async (_) => {
         _.preventDefault();
         try {
-          const A = await we.post("http://localhost:5000/teams", a);
+          const A = await we.post("http://localhost:5000/api/teams", a);
           i((R) => [...R, A.data]),
             o({ name: "", post: "", text: "", image: "" }),
             g("Team successfully added!"),
@@ -23112,7 +23112,7 @@ const d_ = () => {
       },
       b = async () => {
         try {
-          await we.delete(`http://localhost:5000/teams/${l.id}`),
+          await we.delete(`http://localhost:5000/api/teams/${l.id}`),
             i((_) => _.filter((A) => A.id !== l.id)),
             h(!1),
             c(null),
@@ -23302,7 +23302,7 @@ const d_ = () => {
       [m, h] = L.useState(""),
       [p, g] = L.useState(null);
     L.useEffect(() => {
-      we.get("http://localhost:5000/services")
+      we.get("http://localhost:5000/api/services")
         .then((y) => i(y.data))
         .catch(() => c("Error fetching services."));
     }, []);
@@ -23311,7 +23311,7 @@ const d_ = () => {
           c("All fields are required.");
           return;
         }
-        we.post("http://localhost:5000/services", { ...a })
+        we.post("http://localhost:5000/api/services", { ...a })
           .then((y) => {
             i([...n, y.data]),
               o({ image: "", "wedding-type": "", text: "" }),
@@ -23321,7 +23321,7 @@ const d_ = () => {
           .catch(() => c("Failed to add service."));
       },
       P = (y) => {
-        we.delete(`http://localhost:5000/services/${y}`)
+        we.delete(`http://localhost:5000/api/services/${y}`)
           .then(() => {
             i(n.filter((j) => j.id !== y)),
               h("Service deleted successfully!"),
@@ -23489,7 +23489,7 @@ const p_ = () => {
     const [n, i] = L.useState([]);
     return (
       L.useEffect(() => {
-        fetch("http://localhost:5000/users")
+        fetch("http://localhost:5000/api/users")
           .then((a) => {
             if (!a.ok) throw new Error(`HTTP error! Status: ${a.status}`);
             return a.json();
@@ -23581,7 +23581,7 @@ const p_ = () => {
           return;
         }
         try {
-          await we.post("http://localhost:5000/api/auth/register", i),
+          await we.post("http://localhost:5000/api/api/auth/register", i),
             Ne.success("Registration successful!"),
             n("/login");
         } catch {
