@@ -27,61 +27,73 @@ const UserModel = mongoose.model('testimonial', userSchema);
 // Routes
 app.get("/api/testimonials", async (req, res) => {
     try {
-      let data = await UserModel.find();
-      res.status(200).send(data);
+        let data = await UserModel.find();
+        res.status(200).send(data);
     } catch (error) {
-      res.status(401).send({ msg: error.message});
+        console.error(error);
+        res.status(500).send({ msg: "Internal Server Error" });
     }
-  });
-  app.get("/api/users", async (req, res) => {
-    try {
-      let data = await UserModel.find();
-      res.status(200).send(data);
-    } catch (error) {
-      res.status(401).send({ msg: error.message});
-    }
-  });
-  app.get("/api/teams", async (req, res) => {
-    try {
-      let data = await UserModel.find();
-      res.status(200).send(data);
-    } catch (error) {
-      res.status(401).send({ msg: error.message});
-    }
-  });
+});
 
-  app.get("/api/slide", async (req, res) => {
+app.get("/api/users", async (req, res) => {
     try {
-      let data = await UserModel.find();
-      res.status(200).send(data);
+        let data = await UserModel.find();
+        res.status(200).send(data);
     } catch (error) {
-      res.status(401).send({ msg: error.message});
+        console.error(error);
+        res.status(500).send({ msg: "Internal Server Error" });
     }
-  });
-  app.get("/api/gallery", async (req, res) => {
+});
+
+app.get("/api/teams", async (req, res) => {
     try {
-      let data = await UserModel.find();
-      res.status(200).send(data);
+        let data = await UserModel.find();
+        res.status(200).send(data);
     } catch (error) {
-      res.status(401).send({ msg: error.message});
+        console.error(error);
+        res.status(500).send({ msg: "Internal Server Error" });
     }
-  });
-  app.get("/api/slider", async (req, res) => {
+});
+
+app.get("/api/slide", async (req, res) => {
     try {
-      let data = await UserModel.find();
-      res.status(200).send(data);
+        let data = await UserModel.find();
+        res.status(200).send(data);
     } catch (error) {
-      res.status(401).send({ msg: error.message});
+        console.error(error);
+        res.status(500).send({ msg: "Internal Server Error" });
     }
-  });
-  app.get("/api/services", async (req, res) => {
+});
+
+app.get("/api/gallery", async (req, res) => {
     try {
-      let data = await UserModel.find();
-      res.status(200).send(data);
+        let data = await UserModel.find();
+        res.status(200).send(data);
     } catch (error) {
-      res.status(401).send({ msg: error.message});
+        console.error(error);
+        res.status(500).send({ msg: "Internal Server Error" });
     }
-  });
+});
+
+app.get("/api/slider", async (req, res) => {
+    try {
+        let data = await UserModel.find();
+        res.status(200).send(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ msg: "Internal Server Error" });
+    }
+});
+
+app.get("/api/services", async (req, res) => {
+    try {
+        let data = await UserModel.find();
+        res.status(200).send(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ msg: "Internal Server Error" });
+    }
+});
 
 app.get("/",(req,res)=>{
   res.sendFile(path.join(__dirname, "views", "dist", "index.html"));
