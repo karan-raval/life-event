@@ -6,98 +6,19 @@ const path = require("path")
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
+const frontendapi = require('./routes/frontendapi.js');
+const TestimonialModel = require('./models/TestimonialSchema.js');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware
 app.use(cors());
+app.use(express.json())
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "views", "dist")));
 
-// Define UserModel for testimonials
-const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    testimonial: { type: String, required: true },
-    date: { type: Date, default: Date.now }
-});
-
-const UserModel = mongoose.model('testimonial', userSchema);
-
-// Routes
-app.get("/api/testimonials", async (req, res) => {
-    try {
-        let data = await UserModel.find();
-        res.status(200).send(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ msg: "Internal Server Error" });
-    }
-});
-
-app.get("/api/users", async (req, res) => {
-    try {
-        let data = await UserModel.find();
-        res.status(200).send(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ msg: "Internal Server Error" });
-    }
-});
-
-app.get("/api/teams", async (req, res) => {
-    try {
-        let data = await UserModel.find();
-        res.status(200).send(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ msg: "Internal Server Error" });
-    }
-});
-
-app.get("/api/slide", async (req, res) => {
-    try {
-        let data = await UserModel.find();
-        res.status(200).send(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ msg: "Internal Server Error" });
-    }
-});
-
-app.get("/api/gallery", async (req, res) => {
-    try {
-        let data = await UserModel.find();
-        res.status(200).send(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ msg: "Internal Server Error" });
-    }
-});
-
-app.get("/api/slider", async (req, res) => {
-    try {
-        let data = await UserModel.find();
-        res.status(200).send(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ msg: "Internal Server Error" });
-    }
-});
-
-app.get("/api/services", async (req, res) => {
-    try {
-        let data = await UserModel.find();
-        res.status(200).send(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ msg: "Internal Server Error" });
-    }
-});
-
-app.get("/",(req,res)=>{
-  res.sendFile(path.join(__dirname, "views", "dist", "index.html"));
-})
+app.use('/', frontendapi);
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 
@@ -108,5 +29,5 @@ mongoose
   .catch((err) => console.error('MongoDB connection error:', err));
 
 // Start the server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT ;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
