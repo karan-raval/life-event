@@ -16,12 +16,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json())
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "views", "dist")));
+app.use(express.static(path.join(__dirname,'views',"dist")));
+app.use((req, res, next) => {
+  res.set('Cache-Control', 'no-store');
+  next();
+});
 
 app.use('/', frontendapi);
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
-
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,'views','dist','index.html'))
+})
 // MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })

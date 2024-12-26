@@ -18,14 +18,14 @@ frontendapi.get("/testimonials", async (req, res) => {
     }
   });
 
-  // frontendapi.post("/testimonials", async (req, res) => {
-  //   try {
-  //     let data = await TestimonialModel.find();
-  //     res.status(200).send(data);
-  //   } catch (error) {
-  //     res.status(401).send({ msg: error.message});
-  //   }
-  // });
+  frontendapi.post("/testimonials", async (req, res) => {
+    try {
+      let data = await TestimonialModel.create(req.body);
+      res.status(200).send(data);
+    } catch (error) {
+      res.status(401).send({ msg: error.message});
+    }
+  });
 
   frontendapi.get("/slide", (async (req, res) => {
     try {
@@ -73,14 +73,14 @@ frontendapi.get("/slider", async (req, res) => {
     }
   });
 
-  // frontendapi.post("/services", async (req, res) => {
-  //   try {
-  //     let data = await ServicesModel.find();
-  //     res.status(200).send(data);
-  //   } catch (error) {
-  //     res.status(401).send({ msg: error.message});
-  //   }
-  // });
+  frontendapi.post("/services", async (req, res) => {
+    try {
+      let data = await ServicesModel.create(req.body);
+      res.status(200).send(data);
+    } catch (error) {
+      res.status(401).send({ msg: error.message});
+    }
+  });
 
 
 
@@ -113,13 +113,13 @@ frontendapi.get("/slider", async (req, res) => {
     }
   });
 
-  // frontendapi.post("/teams", async (req, res) => {
-  //   try {
-  //     let data = await TeamsModel.find();
-  //     res.status(200).send(data);
-  //   } catch (error) {
-  //     res.status(401).send({ msg: error.message});
-  //   }
-  // });
+  frontendapi.post("/teams", async (req, res) => {
+    try {
+      let data = await TeamsModel.create(req.body);
+      res.status(200).send(data);
+    } catch (error) {
+      res.status(401).send({ msg: error.message});
+    }
+  });
 
   module.exports=frontendapi
