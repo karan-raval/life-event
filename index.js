@@ -16,7 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json())
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname,'views',"dist")));
 app.use((req, res, next) => {
   res.set('Cache-Control', 'no-store');
   next();
@@ -25,6 +24,8 @@ app.use((req, res, next) => {
 app.use('/', frontendapi);
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
+app.use(express.static(path.join(__dirname,'views',"dist")));
+
 app.get('*',(req,res)=>{
   res.sendFile(path.join(__dirname,'views','dist','index.html'))
 })
