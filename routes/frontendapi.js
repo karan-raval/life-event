@@ -122,4 +122,15 @@ frontendapi.get("/slider", async (req, res) => {
     }
   });
 
+  frontendapi.delete("/deletemovie/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      await TestimonialModel.findByIdAndDelete(id);
+      res.status(200).send({ msg: "Data Deleted Successfully" });
+    } catch (error) {
+      console.error("Delete error:", error);
+      res.status(500).send({ msg: error.message });
+    }
+  });
+
   module.exports=frontendapi
