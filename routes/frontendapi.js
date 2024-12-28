@@ -87,7 +87,6 @@ frontendapi.get("/slider", async (req, res) => {
   frontendapi.get("/gallery", async (req, res) => {
     try {
       let data = await GalleryModel.find();
-      console.log(data);
       res.status(200).send(data);
     } catch (error) {
       res.status(401).send({ msg: error.message});
@@ -136,7 +135,7 @@ frontendapi.get("/slider", async (req, res) => {
   frontendapi.delete("/slide/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      await TestimonialModel.findByIdAndDelete(id);
+      await SlideModel.findByIdAndDelete(id);
       res.status(200).send({ msg: "Data Deleted Successfully" });
     } catch (error) {
       console.error("Delete error:", error);
@@ -148,7 +147,7 @@ frontendapi.get("/slider", async (req, res) => {
   frontendapi.delete("/slider/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      await TestimonialModel.findByIdAndDelete(id);
+      await sliderModel.findByIdAndDelete(id);
       res.status(200).send({ msg: "Data Deleted Successfully" });
     } catch (error) {
       console.error("Delete error:", error);
@@ -160,7 +159,7 @@ frontendapi.get("/slider", async (req, res) => {
   frontendapi.delete("/services/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      await TestimonialModel.findByIdAndDelete(id);
+      await ServicesModel.findByIdAndDelete(id);
       res.status(200).send({ msg: "Data Deleted Successfully" });
     } catch (error) {
       console.error("Delete error:", error);
@@ -171,7 +170,7 @@ frontendapi.get("/slider", async (req, res) => {
   frontendapi.delete("/gallery/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      await TestimonialModel.findByIdAndDelete(id);
+      await GalleryModel.findByIdAndDelete(id);
       res.status(200).send({ msg: "Data Deleted Successfully" });
     } catch (error) {
       console.error("Delete error:", error);
@@ -183,7 +182,7 @@ frontendapi.get("/slider", async (req, res) => {
   frontendapi.delete("/teams/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      await TestimonialModel.findByIdAndDelete(id);
+      await TeamsModel.findByIdAndDelete(id);
       res.status(200).send({ msg: "Data Deleted Successfully" });
     } catch (error) {
       console.error("Delete error:", error);
