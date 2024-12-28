@@ -122,7 +122,65 @@ frontendapi.get("/slider", async (req, res) => {
     }
   });
 
-  frontendapi.delete("/deletemovie/:id", async (req, res) => {
+  frontendapi.delete("/testimonials/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      await TestimonialModel.findByIdAndDelete(id);
+      res.status(200).send({ msg: "Data Deleted Successfully" });
+    } catch (error) {
+      console.error("Delete error:", error);
+      res.status(500).send({ msg: error.message });
+    }
+  });
+
+  frontendapi.delete("/slide/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      await TestimonialModel.findByIdAndDelete(id);
+      res.status(200).send({ msg: "Data Deleted Successfully" });
+    } catch (error) {
+      console.error("Delete error:", error);
+      res.status(500).send({ msg: error.message });
+    }
+  });
+
+
+  frontendapi.delete("/slider/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      await TestimonialModel.findByIdAndDelete(id);
+      res.status(200).send({ msg: "Data Deleted Successfully" });
+    } catch (error) {
+      console.error("Delete error:", error);
+      res.status(500).send({ msg: error.message });
+    }
+  });
+
+
+  frontendapi.delete("/services/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      await TestimonialModel.findByIdAndDelete(id);
+      res.status(200).send({ msg: "Data Deleted Successfully" });
+    } catch (error) {
+      console.error("Delete error:", error);
+      res.status(500).send({ msg: error.message });
+    }
+  });
+
+  frontendapi.delete("/gallery/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      await TestimonialModel.findByIdAndDelete(id);
+      res.status(200).send({ msg: "Data Deleted Successfully" });
+    } catch (error) {
+      console.error("Delete error:", error);
+      res.status(500).send({ msg: error.message });
+    }
+  });
+
+
+  frontendapi.delete("/teams/:id", async (req, res) => {
     try {
       const { id } = req.params;
       await TestimonialModel.findByIdAndDelete(id);
